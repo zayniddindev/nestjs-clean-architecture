@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common';
-import { ICrmServices } from '../../../core';
+import { Module } from "@nestjs/common";
+import { ICrmServices } from "../../../core";
 
-import { SalesforceService } from './salesforce-service.service';
+import { SalesforceService } from "./salesforce-service.service";
 
 @Module({
   providers: [

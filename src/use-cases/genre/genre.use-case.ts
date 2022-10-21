@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { Genre } from '../../core/entities';
-import { IDataServices } from '../../core/abstracts';
-import { CreateGenreDto, UpdateGenreDto } from '../../core/dtos';
-import { GenreFactoryService } from './genre-factory.service';
+import { Injectable } from "@nestjs/common";
+import { Genre } from "../../core/entities";
+import { IDataServices } from "../../core/abstracts";
+import { CreateGenreDto, UpdateGenreDto } from "../../core/dtos";
+import { GenreFactoryService } from "./genre-factory.service";
 
 @Injectable()
 export class GenreUseCases {
   constructor(
     private dataServices: IDataServices,
-    private genreFactoryService: GenreFactoryService,
+    private genreFactoryService: GenreFactoryService
   ) {}
 
   getAllGenres(): Promise<Genre[]> {

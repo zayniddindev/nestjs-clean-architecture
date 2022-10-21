@@ -1,14 +1,14 @@
-import { Injectable } from '@nestjs/common';
-import { Author } from '../../core/entities';
-import { IDataServices } from '../../core/abstracts';
-import { CreateAuthorDto, UpdateAuthorDto } from '../../core/dtos';
-import { AuthorFactoryService } from './author-factory.service';
+import { Injectable } from "@nestjs/common";
+import { Author } from "../../core/entities";
+import { IDataServices } from "../../core/abstracts";
+import { CreateAuthorDto, UpdateAuthorDto } from "../../core/dtos";
+import { AuthorFactoryService } from "./author-factory.service";
 
 @Injectable()
 export class AuthorUseCases {
   constructor(
     private dataServices: IDataServices,
-    private authorFactoryService: AuthorFactoryService,
+    private authorFactoryService: AuthorFactoryService
   ) {}
 
   getAllAuthors(): Promise<Author[]> {
@@ -26,7 +26,7 @@ export class AuthorUseCases {
 
   updateAuthor(
     authorId: string,
-    updateAuthorDto: UpdateAuthorDto,
+    updateAuthorDto: UpdateAuthorDto
   ): Promise<Author> {
     const author = this.authorFactoryService.updateAuthor(updateAuthorDto);
     return this.dataServices.authors.update(authorId, author);

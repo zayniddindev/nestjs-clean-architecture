@@ -1,12 +1,16 @@
-import { Controller, Get, Param, Post, Body, Put } from '@nestjs/common';
-import { CreateBookDto, UpdateBookDto, CreateBookResponseDto } from '../core/dtos';
-import { BookUseCases, BookFactoryService } from '../use-cases/book';
+import { Controller, Get, Param, Post, Body, Put } from "@nestjs/common";
+import {
+  CreateBookDto,
+  UpdateBookDto,
+  CreateBookResponseDto,
+} from "../core/dtos";
+import { BookUseCases, BookFactoryService } from "../use-cases/book";
 
-@Controller('api/book')
+@Controller("api/book")
 export class BookController {
   constructor(
     private bookUseCases: BookUseCases,
-    private bookFactoryService: BookFactoryService,
+    private bookFactoryService: BookFactoryService
   ) {}
 
   @Get()
@@ -14,13 +18,15 @@ export class BookController {
     return this.bookUseCases.getAllBooks();
   }
 
-  @Get(':id')
-  async getById(@Param('id') id: any) {
+  @Get(":id")
+  async getById(@Param("id") id: any) {
     return this.bookUseCases.getBookById(id);
   }
 
   @Post()
-  async createBook(@Body() bookDto: CreateBookDto) : Promise<CreateBookResponseDto> {
+  async createBook(
+    @Body() bookDto: CreateBookDto
+  ): Promise<CreateBookResponseDto> {
     const createBookResponse = new CreateBookResponseDto();
     try {
       const book = this.bookFactoryService.createNewBook(bookDto);
@@ -36,10 +42,10 @@ export class BookController {
     return createBookResponse;
   }
 
-  @Put(':id')
+  @Put(":id")
   updateBook(
-    @Param('id') bookId: string,
-    @Body() updateBookDto: UpdateBookDto,
+    @Param("id") bookId: string,
+    @Body() updateBookDto: UpdateBookDto
   ) {
     const book = this.bookFactoryService.updateBook(updateBookDto);
     return this.bookUseCases.updateBook(bookId, book);

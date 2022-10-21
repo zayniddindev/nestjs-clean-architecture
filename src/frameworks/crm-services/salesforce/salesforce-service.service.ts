@@ -1,6 +1,6 @@
-import { Injectable } from '@nestjs/common';
-import { Book } from '../../../core/entities';
-import { ICrmServices } from '../../../core/abstracts';
+import { Injectable } from "@nestjs/common";
+import { Book } from "../../../core/entities";
+import { ICrmServices } from "../../../core/abstracts";
 
 @Injectable()
 export class SalesforceService implements ICrmServices {
